@@ -9,10 +9,10 @@ import { AuthController } from './auth.controller';
       {
         typegooseClass: AuthModule,
         schemaOptions: {
-          collection: 'Auth'
-        }
-      }
-    ])
-  ]
+          collection: 'Auth',
+        },
+      },
+    ]),
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

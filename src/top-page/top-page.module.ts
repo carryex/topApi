@@ -10,10 +10,10 @@ import { TopPageModel } from './top-page.model';
       {
         typegooseClass: TopPageModel,
         schemaOptions: {
-          collection: 'TopPage'
-        }
-      }
-    ])
-  ]
+          collection: 'TopPage',
+        },
+      },
+    ]),
+  ],
 })
-export class TopPageModule { }
+export class TopPageModule {}

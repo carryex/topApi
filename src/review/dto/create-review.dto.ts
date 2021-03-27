@@ -1,7 +1,7 @@
-export class CreateRivewDto {
-	name: string;
-	title: string;
-	description: string;
-	rating: number;
-	pdroductId: string;
+export class CreateRiviewDto {
+  name: string;
+  title: string;
+  description: string;
+  rating: number;
+  productId: string;
 }

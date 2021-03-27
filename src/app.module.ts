@@ -13,12 +13,12 @@ import { getMongoConfig } from './configs/mongo.config';
     TypegooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: getMongoConfig
+      useFactory: getMongoConfig,
     }),
     AuthModule,
     TopPageModule,
     ReviewModule,
-    ProductModule
+    ProductModule,
   ],
 })
 export class AppModule { }
