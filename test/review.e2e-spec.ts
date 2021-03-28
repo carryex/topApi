@@ -28,6 +28,7 @@ describe('AppController (e2e)', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
   });
+
   it('/review/create (POST) - success', async (done) => {
     return request(app.getHttpServer())
       .post('/review/create')
@@ -38,6 +39,13 @@ describe('AppController (e2e)', () => {
         expect(createdId).toBeDefined();
         done();
       })
+  });
+
+  it('/review/create (POST) - fail', () => {
+    return request(app.getHttpServer())
+      .post('/review/create')
+      .send({ ...testDto, rating: 0 })
+      .expect(400)
   });
 
   it('/review/byProduct/:productId (GET) - success', async (done) => {
