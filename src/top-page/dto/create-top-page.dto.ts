@@ -1,22 +1,8 @@
 import { Type } from 'class-transformer';
-import { IsArray, IsEnum, IsNumber, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { IsArray, IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { TopLevelCategory } from '../top-page.model';
 
-enum TopLevelCategory {
-	Courses,
-	Services,
-	Books,
-	Products,
-}
-
-class TopPageAdvantage {
-	@IsString()
-	title: string;
-
-	@IsString()
-	description: string;
-}
-
-class HhData {
+export class HhDataDto {
 	@IsNumber()
 	count: number;
 
@@ -30,9 +16,17 @@ class HhData {
 	seniorSalary: number;
 }
 
+export class TopPageAdvantageDto {
+	@IsString()
+	title: string;
+
+	@IsString()
+	description: string;
+}
+
 export class CreateTopPageDto {
 	@IsEnum(TopLevelCategory)
-	firstLevelCategory: TopLevelCategory;
+	firstCategory: TopLevelCategory;
 
 	@IsString()
 	secondCategory: string;
@@ -44,18 +38,23 @@ export class CreateTopPageDto {
 	title: string;
 
 	@IsString()
+	metaTitle: string;
+
+	@IsString()
+	metaDescription: string;
+
+	@IsString()
 	category: string;
 
 	@IsOptional()
-	@IsObject()
 	@ValidateNested()
-	@Type(() => HhData)
-	hh?: HhData;
+	@Type(() => HhDataDto)
+	hh?: HhDataDto;
 
 	@IsArray()
 	@ValidateNested()
-	@Type(() => TopPageAdvantage)
-	advantages: TopPageAdvantage[];
+	@Type(() => TopPageAdvantageDto)
+	advantages: TopPageAdvantageDto[];
 
 	@IsString()
 	seoText: string;
